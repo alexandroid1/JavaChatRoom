@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+
 public class Server extends JFrame {
 
     private JTextField userText;
@@ -24,10 +25,32 @@ public class Server extends JFrame {
         userText.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
-
+                        sendMessage(event.getActionCommand());
+                        userText.setText("");
                     }
                 }
         );
+        add(userText, BorderLayout.NORTH);
+        chatWindow = new JTextArea();
+        add(new JScrollPane(chatWindow));
+        setSize(300,150);
+        setVisible(true);
+    }
+
+    // set up and run the server
+    public void startRunning(){
+        try {
+            server = new ServerSocket(6789,100);
+            while(true){
+                try{
+                    //connect and have conversation
+                }catch (EOFException eofException){
+                    showMessage("\n Server ended the connection!");
+                }
+            }
+        }catch (IOException ioException){
+            ioException.printStackTrace();
+        }
     }
 
 }
