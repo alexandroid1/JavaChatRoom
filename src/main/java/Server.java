@@ -16,6 +16,18 @@ public class Server extends JFrame {
     private ServerSocket server;
     private Socket connection;
 
-    
+    //constructor
+    public Server(){
+        super("new Messenger");
+        userText = new JTextField();
+        userText.setEditable(false);
+        userText.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent event) {
+
+                    }
+                }
+        );
+    }
 
 }
