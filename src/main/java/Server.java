@@ -43,9 +43,13 @@ public class Server extends JFrame {
             server = new ServerSocket(6789,100);
             while(true){
                 try{
-                    //connect and have conversation
+                    waitForConnection();
+                    setupStreams();
+                    whileChatting();
                 }catch (EOFException eofException){
                     showMessage("\n Server ended the connection!");
+                }finally{
+                    closeCrap();
                 }
             }
         }catch (IOException ioException){
