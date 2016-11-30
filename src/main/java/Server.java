@@ -76,5 +76,9 @@ public class Server extends JFrame {
     private void whileChatting() throws IOException{
         String message = " You are now connected ";
         sendMessage(message);
+        ableToType(true);
+        do{
+            //have  conversation
+        }while(!message.equals("CLIENT - END"));
     }
 }
