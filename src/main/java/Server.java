@@ -57,4 +57,24 @@ public class Server extends JFrame {
         }
     }
 
+    // wait for connection, then display connection information
+    private void waitForConnection() throws IOException {
+        showMessage(" Waiting for someone to connect... \n");
+        connection = server.accept();
+        showMessage(" Now connected to " + connection.getInetAddress().getHostName());
+    }
+
+    // get stream to send and receive data
+    private void setupStreams () throws IOException{
+        output = new ObjectOutputStream(connection.getOutputStream());
+        output.flush();
+        input = new ObjectInputStream(connection.getInputStream());
+        showMessage(" \n  Streams are now setup! \n ");
+    }
+
+    // during the chat conversation
+    private void whileChatting() throws IOException{
+        String message = " You are now connected ";
+        sendMessage(message);
+    }
 }
