@@ -78,7 +78,27 @@ public class Server extends JFrame {
         sendMessage(message);
         ableToType(true);
         do{
-            //have  conversation
+            try{
+                message = (String) input.readObject();
+                showMessage("\n" + message);
+            }catch(ClassNotFoundException classNotFoundException){
+                showMessage("\n I don't know wtf that user sent!");
+            }
         }while(!message.equals("CLIENT - END"));
     }
+
+    //close streams and sockets after you are done chatting
+    public void closeCrap(){
+        showMessage(" \n Closing connections ... \n ");
+        ableToType(false);
+        try{
+            output.close();
+            input.close();
+            connection.close();
+        }catch(IOException ioException){
+            ioException.printStackTrace();
+        }
+    }
+
+
 }
