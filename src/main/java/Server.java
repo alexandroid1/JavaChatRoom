@@ -104,10 +104,21 @@ public class Server extends JFrame {
     private void sendMessage(String message){
         try{
             output.writeObject("SERVER - " + message);
+            output.flush();
+            showMessage(" \n SERVER - " + message);
         }catch (IOException ioException){
             chatWindow.append(" \n ERROR: DUDE I CAN'T SENT THAT MESSAGE");
         }
     }
 
+    //updates chat window
+    private void showMessage(final String text){
+        SwingUtilities.invokeLater(
+                new Runnable() {
+                    public void run() {
 
+                    }
+                }
+        );
+    }
 }
