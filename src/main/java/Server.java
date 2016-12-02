@@ -116,7 +116,18 @@ public class Server extends JFrame {
         SwingUtilities.invokeLater(
                 new Runnable() {
                     public void run() {
+                        chatWindow.append(text);
+                    }
+                }
+        );
+    }
 
+    //let the user type stuff into their box
+    private void ableToType(final boolean tof){
+        SwingUtilities.invokeLater(
+                new Runnable() {
+                    public void run() {
+                        userText.setEditable(tof);
                     }
                 }
         );
