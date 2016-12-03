@@ -36,6 +36,20 @@ public class Client extends JFrame{
         add(new JScrollPane(chatWindow), BorderLayout.CENTER);
         setSize(300, 150);
         setVisible(true);
+    }
 
+    // connect to server
+    public void startRunning(){
+        try{
+            connectToServer();
+            setupStreams();
+            whileChatting();
+        }catch(EOFException eofException){
+            showMessage(" \n Client terminated connection");
+        }catch(IOException ioException){
+            ioException.printStackTrace();
+        }finally{
+            CloseCp();
+        }
     }
 }
