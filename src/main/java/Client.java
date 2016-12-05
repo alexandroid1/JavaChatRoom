@@ -26,7 +26,7 @@ public class Client extends JFrame{
         userText.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
-                        sendData(event.getActionCommand());
+                        sendMessage(event.getActionCommand());
                         userText.setText("");
                     }
                 }
@@ -74,7 +74,7 @@ public class Client extends JFrame{
         do{
             try{
                 message = (String) input.readObject();
-                showMesssage("\n" + message);
+                showMessage("\n" + message);
             }catch (ClassNotFoundException classNotFoundException){
                 showMessage("\n I don't know that object type");
             }
